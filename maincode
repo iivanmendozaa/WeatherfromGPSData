@@ -1,0 +1,81 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+      
+	  
+        <script>
+		var lati= prompt("ingresa latitud");
+		var longi=prompt("ingresa longitud");
+		var cadena;
+		document.write("Esta es la Latitud:");
+		document.write(lati);
+		document.write('<br>');
+		document.write("Esta es la Longitud:");
+		document.write(longi);
+		document.write('<br>');
+
+		//lati="31.73";
+		//longi="-106.48";
+
+		</script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		    <script>
+			
+            $(document).ready(function getWD() {
+                $("button").click(function getWD() {
+                    $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat='+lati+'&lon='+longi,
+
+				
+					
+                    function getWD(data) { // this function use JSON to get data from external API
+					
+					
+					alert(JSON.stringify(data)); // show the obtained data from API // NOTE NAOKO All this can be omitted only you need put "//"" before
+					// begin the data convertion to serialize like serial commands  
+                          alert(JSON.stringify(data,null,4));                      // NOTE NAOKO All this can be omitted only you need put "//"" before
+						   var identedText =JSON.stringify(data,null,4);
+						       document.write("<h1>Data converted to serialize</h1> <pre>"+identedText+"</pre>");
+							   
+							   /* Create a string serialization of the "deepObject" JS Oject */
+    var jsonString = JSON.stringify(data);
+    
+    /* output the JSON string to html */
+    document.write("<h1>Unidented</h1> <pre>"+jsonString+"</pre>"); // NOTE NAOKO All this can be omitted only you need put "//"" before
+	
+	var n = jsonString.search("temp");
+	
+	document.write("Esta es la posicion del valor en el string: "+n+""); /// NOTE NAOKO All this can be omitted only you need put "//"" before
+	
+	var m = n+6; //position of temp in string + spaces to find the temp value
+	
+	var temp_Kelvin = jsonString.slice(m,m+6);
+	var temp_Celsius = temp_Kelvin-273;
+	 
+    document.write('<br>');
+	document.write("<h1>Esta es la temperatura en Kelvin: "+temp_Kelvin+"</h1>");     // COMO PUEDES VER YA TODO QUEDA EN VARIABLES QUE PUEDES ESCRIBIR
+																					  // DE MANERA REMOTA A TRAVES DE INTERNET USANDO WEB SOCKETS
+	    document.write('<br>');
+	document.write("<h1>Esta es la temperatura en Centigrados: "+temp_Celsius+"</h1>");
+                    });
+                });
+            });
+			
+			// FUENTES
+			//http://code.runnable.com/Ulei-HmIWkYZAAKw/how-to-serialize-json-to-a-string-for-javascript
+			//http://themarklee.com/2014/04/03/pulling-json-data-open-data-api/
+			//http://www.rapidtables.com/convert/temperature/how-kelvin-to-celsius.htm
+			//http://stackoverflow.com/questions/4234533/how-do-i-concatenate-a-string-with-a-variable
+			//http://www.w3schools.com/jsref/jsref_obj_string.asp
+        </script>
+    </head>
+
+    <body>
+	<h1>Clima en tu posicion Geografica</h1>
+		
+        <button>Obtener datos</button>
+    </body>
+	
+	
+</html>
